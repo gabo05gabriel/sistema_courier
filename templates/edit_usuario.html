@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Usuario - Courier System{% endblock %}
+
+{% block content %}
+    <h1>Editar Usuario</h1>
+    <form action="{{ url_for('edit_usuario', id=usuario.usuario_id) }}" method="POST">
+        <label for="nombre">Nombre:</label><br>
+        <input type="text" id="nombre" name="nombre" value="{{ usuario.nombre }}" required><br><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" value="{{ usuario.email }}" required><br><br>
+        <label for="telefono">Teléfono:</label><br>
+        <input type="text" id="telefono" name="telefono" value="{{ usuario.telefono }}"><br><br>
+        <label for="contrasena">Contraseña:</label><br>
+        <input type="password" id="contrasena" name="contrasena" value="{{ usuario.contrasena }}" required><br><br>
+        <label for="rol_id">Rol:</label><br>
+        <input type="number" id="rol_id" name="rol_id" value="{{ usuario.rol_id }}" required><br><br>
+        <button type="submit">Enviar</button>
+    </form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Usuarios - Courier System{% endblock %}
+
+{% block content %}
+    <h1>Usuarios</h1>
+    <a href="{{ url_for('add_usuario') }}">Agregar nuevo Usuario</a>
+    <ul>
+        {% for usuario in usuarios %}
+            <li>{{ usuario.nombre }} - {{ usuario.email }}
+                <a href="{{ url_for('edit_usuario', id=usuario.usuario_id) }}">Editar</a>
+                <a href="{{ url_for('delete_usuario', id=usuario.usuario_id) }}">Eliminar</a>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
