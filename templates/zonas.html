@@ -3,32 +3,14 @@
 {% block title %}Zonas - Courier System{% endblock %}
 
 {% block content %}
-<h1>Mapa de Zonas</h1>
-
-<!-- Contenedor del mapa -->
-<div id="map" style="height: 500px; width: 100%;"></div>
-
-<!-- Script de Google Maps (SIN callback) -->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCtcsaHbE3TM3bgGfMDYXzi8mPyGDAWnZI" defer></script>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        initMap();
-    });
-
-    function initMap() {
-        const map = new google.maps.Map(document.getElementById("map"), {
-            center: { lat: -16.5, lng: -68.15 }, // Coordenadas de La Paz, Bolivia (por ejemplo)
-            zoom: 13
-        });
-
-        new google.maps.Marker({
-            position: { lat: -16.5, lng: -68.15 },
-            map,
-            title: "Zona Central"
-        });
-
-        // Puedes agregar más marcadores para otras zonas
-    }
-</script>
+<h1>Zonas</h1>
+<a href="{{ url_for('add_zona') }}">Agregar nueva Zona</a>
+<ul>
+    {% for zona in zonas %}
+    <li>{{ zona.nombre }}
+        <a href="{{ url_for('edit_zona', id=zona.zona_id) }}">Editar</a>
+        <a href="{{ url_for('delete_zona', id=zona.zona_id) }}">Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
 {% endblock %}

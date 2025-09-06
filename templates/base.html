@@ -10,12 +10,20 @@
     <!-- Navbar -->
     <nav>
         <ul>
-            <li><a href="{{ url_for('dashboard') }}">DASHBOARD</a></li> <!-- Agregar botón DASHBOARD -->
+            <li><a href="{{ url_for('dashboard') }}">DASHBOARD</a></li>
+            {% if session.get('rol') == 'admin' %}
             <li><a href="{{ url_for('usuarios') }}">USUARIOS</a></li>
+            <li><a href="{{ url_for('roles') }}">ROLES</a></li>
             <li><a href="{{ url_for('zonas') }}">ZONAS</a></li>
             <li><a href="{{ url_for('rutas') }}">RUTAS</a></li>
+            {% endif %}
             <li><a href="{{ url_for('recojos') }}">RECOJOS</a></li>
             <li><a href="{{ url_for('entregas') }}">ENTREGAS</a></li>
+            {% if session.get('token') %}
+            <li><a href="{{ url_for('logout') }}">LOGOUT</a></li>
+            {% else %}
+            <li><a href="{{ url_for('login') }}">LOGIN</a></li>
+            {% endif %}
         </ul>
     </nav>
 
