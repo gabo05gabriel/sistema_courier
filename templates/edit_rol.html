@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Rol - Courier System{% endblock %}
+
+{% block content %}
+<h1>Editar Rol</h1>
+<form action="{{ url_for('edit_rol', id=rol.rol_id) }}" method="POST">
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" id="nombre" name="nombre" value="{{ rol.nombre }}" required><br><br>
+    <button type="submit">Guardar</button>
+</form>
+{% endblock %}

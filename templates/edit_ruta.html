@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Editar Ruta - Courier System{% endblock %}
+
+{% block content %}
+<h1>Editar Ruta</h1>
+<form action="{{ url_for('edit_ruta', id=ruta.ruta_id) }}" method="POST">
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" id="nombre" name="nombre" value="{{ ruta.nombre }}" required><br><br>
+    <label for="zona_id">Zona:</label><br>
+    <select id="zona_id" name="zona_id">
+        {% for zona in zonas %}
+        <option value="{{ zona.zona_id }}" {% if zona.zona_id == ruta.zona_id %}selected{% endif %}>{{ zona.nombre }}</option>
+        {% endfor %}
+    </select><br><br>
+    <button type="submit">Guardar</button>
+</form>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Roles - Courier System{% endblock %}
+
+{% block content %}
+<h1>Roles</h1>
+<a href="{{ url_for('add_rol') }}">Agregar nuevo Rol</a>
+<ul>
+    {% for rol in roles %}
+    <li>{{ rol.nombre }}
+        <a href="{{ url_for('edit_rol', id=rol.rol_id) }}">Editar</a>
+        <a href="{{ url_for('delete_rol', id=rol.rol_id) }}">Eliminar</a>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}

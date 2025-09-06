@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Agregar Ruta - Courier System{% endblock %}
+
+{% block content %}
+<h1>Agregar nueva Ruta</h1>
+<form action="{{ url_for('add_ruta') }}" method="POST">
+    <label for="nombre">Nombre:</label><br>
+    <input type="text" id="nombre" name="nombre" required><br><br>
+    <label for="zona_id">Zona:</label><br>
+    <select id="zona_id" name="zona_id">
+        {% for zona in zonas %}
+        <option value="{{ zona.zona_id }}">{{ zona.nombre }}</option>
+        {% endfor %}
+    </select><br><br>
+    <button type="submit">Enviar</button>
+</form>
+{% endblock %}
